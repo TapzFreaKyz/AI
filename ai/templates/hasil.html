@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hasil Peminatan</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+      header {
+        background-color: #4caf50;
+        color: white;
+        padding: 1rem 0;
+        text-align: center;
+      }
+      main {
+        padding: 1rem;
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1,
+      h2 {
+        color: #4caf50;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      ul li {
+        background-color: #e2e2e2;
+        margin: 0.5rem 0;
+        padding: 0.5rem;
+        border-radius: 5px;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+      }
+      footer {
+        text-align: center;
+        padding: 1rem 0;
+        background-color: #4caf50;
+        color: white;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <h2>Rekomendasi Peminatan</h2>
+        <p>Anda direkomendasikan di peminatan:</p>
+        <ul>
+          {% for key, value in recommendations.items() %}
+          <li>Rekomendasi {{ key.replace('_', ' ').title() }}: {{ value }}</li>
+          {% endfor %}
+        </ul>
+      </section>
+      <section>
+        <h2>Grafik Fuzzy</h2>
+        {% for label, plot_path in plot_paths.items() %}
+        <article>
+          <h3>{{ label.replace('_', ' ').title() }}</h3>
+          <img
+            src="{{ url_for('plot', plot_name=plot_path) }}"
+            alt="Grafik Fuzzy {{ label.replace('_', ' ').title() }}"
+          />
+        </article>
+        {% endfor %}
+      </section>
+    </main>
+  </body>
+</html>

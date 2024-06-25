@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Input Nilai Mata Kuliah</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+      header {
+        background-color: #4caf50;
+        color: white;
+        padding: 1rem 0;
+        text-align: center;
+      }
+      main {
+        padding: 1rem;
+        max-width: 600px;
+        margin: 2rem auto;
+        background-color: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+      }
+      label {
+        margin-bottom: 0.5rem;
+        color: #4caf50;
+      }
+      input[type="number"] {
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      button {
+        padding: 0.7rem;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Masukkan Nilai Mata Kuliah</h1>
+    </header>
+    <main>
+      <form method="post">
+        {% for var_name in var_names %}
+        <label for="{{ var_name }}"
+          >{{ var_name.replace('_', ' ').title() }}:</label
+        >
+        <input
+          type="number"
+          id="{{ var_name }}"
+          name="{{ var_name }}"
+          min="0"
+          max="100"
+          required
+        />
+        {% endfor %}
+        <button type="submit">Hitung Peminatan</button>
+      </form>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hasil Peminatan dengan Grafik</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('send_static', path='styles.css') }}">
+</head>
+<body>
+    <h1>Hasil Peminatan Anda</h1>
+    <p>Peminatan: {{ hasil_peminatan }}</p>
+
+    <h2>Grafik Fungsi Keanggotaan</h2>
+    <img src="data:image/png;base64,{{ plot_bytes|b64encode }}" alt="Membership Functions">
+
+    <br><br>
+    <a href="/">Kembali ke halaman utama</a>
+</body>
+</html>
